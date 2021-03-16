@@ -1,4 +1,4 @@
-baseURL = "https://www.zxcoder.top"
+baseURL = "/"
 title = "zxCoder's blog"
 theme = "hugo-theme-jijian"
 copyright = "Copyright © 2021-{year} zxCoder. All Rights Reserved."
