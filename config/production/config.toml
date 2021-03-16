@@ -1,2 +1,66 @@
 baseURL = "https://www.zxcoder.top"
-googleAnalytics = ""
+title = "zxCoder's blog"
+theme = "hugo-theme-jijian"
+copyright = "Copyright © 2021-{year} zxCoder. All Rights Reserved."
+defaultContentLanguage = "zh-cn"
+
+# Pagination
+paginate = 6
+paginatePath = "page"
+
+# Google analytics
+# googleAnalytics = "UA-123-45"
+
+enableRobotsTXT = true
+enableEmoji = true
+
+[blackfriday]
+hrefTargetBlank = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+category = "category"
+tag = "tags"
+
+[zh-cn]
+LanguageName = "简体中文"
+contentDir = "content"
+
+
+email = "1129142694@qq.com"
+github = "Zeng1998"
+
+
+# mainSections = ["post", "posts"] # Default to ["posts"].
+titleSeparator = "|" # Title separator. Default to "-".
+dateFormat = "2006-01-02"
+description = "一个简单的Hugo博客主题"
+math = true
+
+# Google Adsense
+googleAdsense = ""
+
+[archive]
+paginate = 8 # Archive pagination. Default to 100.
+# dateFormat = "01-02" # Archive date format. Default to "Jan 2".
+
+[analytics]
+# baidu = "" # Baidu Analytics
+
+# Site verification
+[siteVerification]
+google = ""
+bing = ""
+baidu = ""
+baiduUnion = "" # Baidu Union
+so = ""
+sogou = ""
+shenma = ""
+
+[markup]
+[markup.highlight]
+codeFences = false # 关掉默认的code样式，就离谱，居然用内联样式
+# https://discourse.gohugo.io/t/unable-to-customize-the-syntax-highlight-colors/22140/3
+# https://gohugo.io/getting-started/configuration-markup#highlight
