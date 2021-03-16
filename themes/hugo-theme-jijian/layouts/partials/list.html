@@ -1,0 +1,29 @@
+{{- $pages := (.Paginate .RegularPagesRecursive).Pages -}}
+<div>
+    <div class="columns">
+        <div class="column is-1"></div>
+        <div class="column">
+            {{- if .IsHome -}}
+            {{- $sections := default (slice "posts") .Site.Params.mainSections -}}
+            {{- $pages = where (.Paginate .Site.RegularPages).Pages "Type" "in" $sections -}}
+            {{- else -}}
+            {{- partial "breadcrumb" . -}}
+            {{- partial "sections" . -}}
+            {{- end -}}
+            {{- partial "hooks/list-begin" . -}}
+            <div>
+                {{- range $pages -}}
+                <div class="box z-post-list-item">
+                        <h3>
+                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </h3>
+                        {{- partial "post/list-meta" . -}}
+                </div>
+                {{- end -}}
+            </div>
+            {{- partial "hooks/list-end" . -}}
+            {{- partial "pagination" . -}}
+        </div>
+        <div class="column is-1"></div>
+    </div>
+</div>

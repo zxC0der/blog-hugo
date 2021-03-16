@@ -1,0 +1,19 @@
+<article class="content post">
+  <div class="columns">
+    <div class="column is-full z-detail">
+      <div class="post-content columns">
+          <div class="column is-8">
+              <h1 class="z-detail-title">{{ .Title }}</h1>
+              {{- partial "post/detail-meta" . -}}
+              {{- partial "hooks/content-begin" . -}}
+            {{- .Content -}}
+          </div>
+          <div class="column is-4">
+            {{- partial "post/toc" . -}}
+          </div>
+        </div>
+      {{- partial "post/copyright" . -}}
+      {{- partial "hooks/content-end" . -}}
+    </div>
+  </div>
+</article>

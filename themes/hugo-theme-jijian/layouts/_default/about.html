@@ -1,0 +1,54 @@
+{{ define "content" }}
+<div class="columns">
+    <div class="column is-3"></div>
+    <div class="column z-about">
+        <div class="z-about-title">关于我</div>
+        <ul>
+            <li>
+                一个不
+                <del>喜欢</del>
+                懂科研的准研究生，打过ACM，CF灰名水平，喜欢写代码
+            </li>
+            <li>不喜欢人工智能，是激进的
+                <del>反AI者</del>
+                弱人工智能支持者
+            </li>
+            <li>数学不太行，英文也不太行，语文更不行</li>
+            <li>
+                <a href="https://www.github.com/Zeng1998">
+                    <span class="icon-text">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"/></svg>
+                    </span>
+                    <span>Github</span>
+                </span>
+                </a>
+                <a href="mailto:1129142694@qq.com">
+                    <span class="icon-text">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/></svg>                    </span>
+                    <span>Email</span>
+                </span>
+                </a>
+            </li>
+
+        </ul>
+        <div class="z-about-title">关于这个博客</div>
+        <ul>
+            <li>基于Hugo，主题是
+                <del>抄的</del>
+                修改自
+                <a href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank">
+                    <span class="tag is-danger is-light">hugo-theme-bootstrap</span>
+                </a>，删除了大量的无用的组件和前端工具，整体结构基本没变
+            </li>
+            <li>把UI库从Bootstrap改为Bulma </li>
+            <li>原主题用了Fuse.js做站内搜索，配置了半天觉得不太合适，
+                于是自己手写了一个简单的站内搜索(目前是字符串暴力匹配，打算改成KMP)</li>
+            <li>记录一些做题题解，技术总结，读书笔记，debug经历等等</li>
+        </ul>
+    </div>
+    <div class="column is-3"></div>
+</div>
+{{ end }}
+

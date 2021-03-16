@@ -1,0 +1,41 @@
+<nav id="desktop-navbar" class="navbar is-fixed-top z-navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{{ absLangURL "" }}">
+      zxCoder
+      </a>
+      <a class="navbar-item" href="{{ absLangURL "" }}">
+        首页
+      </a>
+      <a class="navbar-item" href="{{ absLangURL "category" }}">
+      分类
+      </a>
+      <a class="navbar-item" href="{{ absLangURL "tags" }}">
+      标签
+      </a>
+      <a class="navbar-item" href="{{ absLangURL "about" }}">
+      关于
+      </a>
+      <div class="navbar-item">
+        {{- partial "header/search-bar" . -}}
+      </div>
+    </div>
+  </div>
+</nav>
+<nav id="mobile-navbar" class="navbar is-fixed-top z-navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-menu is-active">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{{ absLangURL "" }}">
+      首页
+      </a>
+      <a class="navbar-item" href="{{ absLangURL "category" }}">
+      分类
+      </a>
+      <a class="navbar-item" href="{{ absLangURL "tags" }}">
+      标签
+      </a>
+      <a class="navbar-item" href="{{ absLangURL "search" }}">
+      搜索
+      </a>
+  </div>
+</nav>

@@ -1,0 +1,39 @@
+html {
+  position: relative;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--hbs-background);
+  color: var(--hbs-on-background);
+  display: flex;
+  flex-flow: column;
+  font-family: var(--bs-font-sans-serif);
+  font-size: var(--hbs-font-size);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: var(--hbs-accent);
+}
+
+pre {
+  padding: 1rem;
+  border-radius: .25rem;
+}
+main {
+  top: 90px;
+  padding-top: 55px;
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+}

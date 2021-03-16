@@ -1,0 +1,6 @@
+{{- if isset .Site.Params "creativecommons" -}}
+<div class="z-post-footer">
+  <p>本站遵循 CC-BY-NC 4.0 协议</p>
+  <p>转载请注明原文地址: <a href="{{ .Permalink | absURL }}">https:{{ .Permalink | absURL }}</a></p>
+</div>
+{{- end -}}

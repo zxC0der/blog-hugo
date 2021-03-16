@@ -1,0 +1,18 @@
+<div>
+        <span class="z-post-meta">
+            {{ .Date.Format ("Jan 2, 2006") }}
+        </span>
+    {{- range $key, $value := .Site.Taxonomies -}}
+    {{- range ($.GetTerms $key) -}}
+    {{ if eq $key "category" }}
+    <span class="tag is-success is-light">
+        <a href="{{ .Permalink }}" class="z-post-meta">{{ .Name }}</a>
+    </span>
+    {{ else }}
+    <span class="tag is-warning is-light">
+        <a href="{{ .Permalink }}" class="z-post-meta">#{{ .Name }}</a>
+    </span>
+    {{ end }}
+    {{- end -}}
+    {{- end -}}
+</div>
