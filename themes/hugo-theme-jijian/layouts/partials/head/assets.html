@@ -1,5 +1,5 @@
-<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
 <!--TODO 如果用bulma cdn，有些样式会被覆盖得很奇怪-->
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
 {{- $mainStyle := resources.Get "css/main.css" -}}
 {{- $customStyle := resources.Get "css/custom.css" -}}
 {{- $style := slice $mainStyle $customStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}

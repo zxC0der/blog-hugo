@@ -2,6 +2,15 @@
  * Create a file "assets/css/custom.cssjs" to customize CSS.
  * PLEASE DO NOT MODIFY THIS FILE DIRECTLY.
  **/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+main {
+    top: 90px;
+    padding-top: 55px;
+    margin-bottom: 0.5rem;
+}
 
 .z-post-list {
     width: 80%;
@@ -151,6 +160,8 @@ ul {
 }
 
 body {
+    display: flex;
+    flex-flow: column;
     margin: 0 !important;
 }
 

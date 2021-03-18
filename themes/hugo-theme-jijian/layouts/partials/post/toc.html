@@ -16,3 +16,27 @@
         </div>
     </div>
 </div>
+<script>
+    let isShow = true;
+    let body = document.getElementById('collapseTOC');
+    let last = null;
+    document.getElementById('headingTOC').addEventListener('click', () => {
+        isShow = !isShow;
+        if (isShow) {
+            body.style.display = 'block';
+        } else {
+            body.style.display = 'none';
+        }
+    });
+    document.body.querySelectorAll('#TableOfContents a,.anchor').forEach(nd => {
+        // 点击后，上次的锚点的css类就要取消
+        nd.addEventListener('click', () => {
+            if (last != null) {
+                document.getElementById(last).classList.remove("z-dingweizhunque");
+            }
+            const id = nd.getAttribute("href").substr(1);
+            last = id;
+            document.getElementById(id).classList.add("z-dingweizhunque");
+        })
+    })
+</script>

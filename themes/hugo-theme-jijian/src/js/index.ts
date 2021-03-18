@@ -10,5 +10,3 @@ document.addEventListener('DOMContentLoaded', () => {
   anchorLink.init();
 
 });
-
-// TODO 如果组件的css自己参考手写的话 可能css会更小
