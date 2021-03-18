@@ -42,3 +42,4 @@ module.exports = {
         new ESLintPlugin(),
     ]
 };
+// TODO 自己弄个github cdn放js 自己本地打包后再放github 可以实现吗？

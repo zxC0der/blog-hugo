@@ -1,6 +1,5 @@
 import Toc from "./toc";
 import TocItem from "./tocItem";
-import AnchorLink from "../js/anchor";
 
 document.addEventListener('DOMContentLoaded', () => {
 
