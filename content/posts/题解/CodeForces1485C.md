@@ -62,7 +62,3 @@ int main(){
     return 0;
 }
 ```
-
-```javascript
-console.log('test');
-```
