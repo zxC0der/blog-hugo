@@ -5,9 +5,7 @@ module.exports = {
     entry: {
         main: './src/js/index.ts',
         search: '/src/search/index.ts',
-        highlight: ['/src/highlight/index.ts', './src/highlight/index.scss'],
         toc: '/src/toc/index.ts',
-        katex: ['./src/katex/index.ts', './src/katex/index.scss'],
     },
     mode: 'production',
     output: {
@@ -35,19 +33,6 @@ module.exports = {
                     }
                 ]
             },
-            {
-                test: /\.(ttf|woff2?)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: '../../static/fonts',
-                            publicPath: '/fonts'
-                        },
-                    },
-                ],
-            }
         ],
     },
     resolve: {

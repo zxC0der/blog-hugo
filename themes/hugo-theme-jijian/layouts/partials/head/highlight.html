@@ -1,4 +1,26 @@
 {{- if or .Params.math .Site.Params.math -}}
-{{- $script := resources.Get "js/highlight.js" | resources.Fingerprint -}}
-<script defer src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.6.0/build/styles/atom-one-light.min.css">
+<script defer src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.6.0/build/highlight.min.js"
+    onload="initHighLight();"></script>
+<!--defer 属性规定当页面已完成加载后，才会执行脚本。-->
+<script>
+    function initHighLight(){
+        // $("code").each(function(){
+        //     $(this).html("<ul><li>" + $(this).html().replace(/\n/g,"\n</li><li>") +"\n</li></ul>");
+        // });
+        hljs.configure({
+            languages: ["c", "cpp", "java", "c#"]
+        });
+        const codes = document.querySelectorAll('div code')
+        codes.forEach((block) => {
+            console.log(block, block.classList)
+            if (block.classList.length >= 1) {
+                hljs.highlightBlock(block);
+            } else {
+                block.classList.add('z-inline-code')
+            }
+        });
+    }
+</script>
 {{- end -}}

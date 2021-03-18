@@ -5,7 +5,6 @@ tags:
   - 预处理
   - 前缀和
   - 思维
-  - 概率dp
   - 期望dp
   - TODO
 math: true
@@ -52,7 +51,25 @@ int main(){
 }
 ```
 
-TODO 概率/期望dp的做法
+再仔细思考，其实题目本质就是N个点，每次随机给一个点染色，问所有点全部染色的次数期望。
+
+考虑期望dp，dp[i]表示已经染色了i个点，要染色n个点所需要的次数期望，状态转移方程为$dp[i]=\frac{i}{n}dp[i]+\frac{n-i}{n}dp[i+1]+1$，其中第一部分是指随机选到的点是已染色的，第二部分是指选到未染色的点，移项化简，得到$dp[i]=dp[i+1]+\frac{n}{n-i}$，初始状态为dp[n]=0。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int N=1e5+50;
+int n;
+double dp[N];
+int main(){
+    scanf("%d",&n);
+    for(int i=n-1;i>=1;i--){
+        dp[i]=dp[i+1]+n*1.0/(n-i);
+    }
+    printf("%.8lf\n",dp[1]);
+    return 0;
+}
+```
 
 ## E
 
