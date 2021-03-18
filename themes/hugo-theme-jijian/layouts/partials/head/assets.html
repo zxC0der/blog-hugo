@@ -1,3 +1,5 @@
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
+<!--TODO 如果用bulma cdn，有些样式会被覆盖得很奇怪-->
 {{- $mainStyle := resources.Get "css/main.css" -}}
 {{- $customStyle := resources.Get "css/custom.css" -}}
 {{- $style := slice $mainStyle $customStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}
@@ -6,6 +8,5 @@
 {{- $customScript := resources.Get "js/custom.js" -}}
 {{- $script := slice $mainScript $customScript | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint -}}
 <script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 {{- partial "head/math" . -}}
 {{- partial "head/highlight" . -}}
