@@ -28,8 +28,18 @@
             body.style.display = 'none';
         }
     });
-    // post-content
     document.body.querySelectorAll('#TableOfContents a,.anchor').forEach(nd => {
+        // 点击后，上次的锚点的css类就要取消
+        nd.addEventListener('click', () => {
+            if (last != null) {
+                document.getElementById(last).classList.remove("z-dingweizhunque");
+            }
+            const id = nd.getAttribute("href").substr(1);
+            last = id;
+            document.getElementById(id).classList.add("z-dingweizhunque");
+        })
+    })
+    document.body.querySelectorAll('.post-content a,.anchor').forEach(nd => {
         // 点击后，上次的锚点的css类就要取消
         nd.addEventListener('click', () => {
             if (last != null) {
