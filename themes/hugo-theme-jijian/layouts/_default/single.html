@@ -1,8 +1,3 @@
-{{ define "head-end" }}
-{{- $script := resources.Get "js/toc.js" | resources.Fingerprint -}}
-<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
-{{ end }}
-
 {{ define "content" }}
 <div>
   <div class="columns">
@@ -14,3 +9,5 @@
   </div>
 </div>
 {{ end }}
+
+

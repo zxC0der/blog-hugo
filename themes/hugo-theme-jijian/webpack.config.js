@@ -3,9 +3,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: './src/js/index.ts',
         search: '/src/search/index.ts',
-        // toc: '/src/toc/index.ts',
     },
     mode: 'production',
     output: {
