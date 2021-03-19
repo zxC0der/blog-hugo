@@ -1,4 +1,3 @@
-import * as Mustache from 'mustache';
 import * as Mark from 'mark.js';
 
 declare global {
@@ -160,11 +159,6 @@ export class MySearch {
         document.title = title; // history.pushState's title was ignored.
     }
 
-    static normalizeTaxonomy(text, render) {
-        // 这个text和render是哪来的
-        return render(text).toLowerCase();
-    }
-
     poplateResults(query) {
         if (!this.results) {
             return;
@@ -219,18 +213,37 @@ export class MySearch {
                 result.content = `${(contentStart === 0 ? '' : '...') + result.content.substring(contentStart, contentStart + instance.resultContentWordCount)}...`;
             }
             const id=`searchResult${idx}`;
-            instance.resultsElement.insertAdjacentHTML('beforeend',
-                Mustache.render(instance.tempResult, {
-                    id,
-                    title: result.title,
-                    content: result.content,
-                    permalink: result.permalink,
-                    category: result.category,
-                    tags: result.tags,
-                    url() {
-                        return MySearch.normalizeTaxonomy;
-                    },
-                }));
+            // 直接拼字符串，去掉mustache包
+            let template="";
+            template+="<div class='box' id='" +
+                id+
+                "'>";
+            template+="<h3 class='search-result-title'>";
+            template+="<a href='"+
+                result.permalink+
+                "'>" +
+                result.title+
+                "</a>";
+            template+="</h3>";
+            template+="<div class='search-result-meta'>";
+            template+="<span class='tag is-success is-light'>";
+            template+="<a href='/category/"+result.category+"' class='z-post-meta'>";
+            template+=result.category;
+            template+="</a>";
+            template+="</span>";
+            for(let j=0;j<result.tags.length;j++){
+                template+="<span class='tag is-warning is-light'>";
+                template+="<a href='/tags/"+result.tags[j]+"' class='z-post-meta'>";
+                template+=result.tags[j];
+                template+="</a>";
+                template+="</span>";
+            }
+            template+="</div>";
+            template+="<div class='search-result-content'>";
+            template+=result.content;
+            template+="</div>";
+            template+="</div>";
+            instance.resultsElement.insertAdjacentHTML('beforeend',template);
             instance.highlight(id, titleKeywords,metaKeywords, contentKeywords);
         }
         this.loading = false;

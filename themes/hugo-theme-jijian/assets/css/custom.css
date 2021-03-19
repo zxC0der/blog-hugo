@@ -234,3 +234,10 @@ body {
     padding: 3px!important;
     margin: 0 !important;
 }
+.search-result-title{
+    margin-bottom: 5px!important;
+}
+.search-result-meta{
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+}

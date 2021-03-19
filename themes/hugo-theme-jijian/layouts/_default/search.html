@@ -2,7 +2,6 @@
 {{- $script := resources.Get "js/search.js" | resources.Fingerprint -}}
 <script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 {{ end }}
-
 {{ define "content" }}
 <div class="columns">
     <div class="column is-1"></div>
