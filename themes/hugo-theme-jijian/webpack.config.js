@@ -2,9 +2,7 @@ const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-    entry: {
-        search: '/src/search/index.ts',
-    },
+    entry: {},
     mode: 'production',
     output: {
         path: path.resolve(path.join(__dirname, 'assets', 'js')),

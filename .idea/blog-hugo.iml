@@ -11,5 +11,6 @@
     <orderEntry type="library" name="katex" level="application" />
     <orderEntry type="library" name="highlight" level="application" />
     <orderEntry type="library" name="atom-one-light" level="application" />
+    <orderEntry type="library" name="mark.js" level="application" />
   </component>
 </module>
