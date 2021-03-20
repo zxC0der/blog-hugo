@@ -29,7 +29,7 @@
   },
   "scripts": {
     "build": "npm-run-all --parallel build:css build:js",
-    "build:css": "node-sass --output-style compressed src/scss/index.scss assets/css/main.css",
+    "build:css": "node-sass --output-style compressed src/scss/_bulma.scss assets/css/main.css",
     "build:js": "webpack",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix",
     "gen": "node ./src/index.js"

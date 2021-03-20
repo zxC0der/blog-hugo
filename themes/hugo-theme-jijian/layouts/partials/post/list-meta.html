@@ -1,3 +1,8 @@
+<style>
+    .z-post-meta {
+        font-size: 14px;
+    }
+</style>
 <div>
     {{- range $key, $value := .Site.Taxonomies -}}
     {{- range ($.GetTerms $key) -}}

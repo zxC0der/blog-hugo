@@ -36,27 +36,27 @@ public Tuple search(Tuple key){
 插入操作的第一步类似查找，从根节点往下找到叶子节点，然后插入到叶子节点，如果该叶子节点size超过了，就应该进行第二步的分裂，`splitLeafNode(tree)`。
 
 ```java
-public boolean insert(Tuple key,Tuple value){          
-    if(search(key)!=null){                             
-        return false;                                  
-    }                                                  
-    Node curNode=root;                                 
-    while(true){                                       
-        if(curNode.isLeaf){                            
-            curNode.insertLeafNode(this,key,value);    
-            break;                                     
-        }else{                                         
+public boolean insert(Tuple key,Tuple value){
+    if(search(key)!=null){
+        return false;
+    }
+    Node curNode=root;
+    while(true){
+        if(curNode.isLeaf){
+            curNode.insertLeafNode(this,key,value);
+            break;
+        }else{
             curNode= curNode.searchInInternalNode(key);
-        }                                              
-    }                                                  
-    return true;                                       
-}  
+        }
+    }
+    return true;
+}
 public void insertLeafNode(BPlusTree tree,Tuple key,Tuple value){
-    insertKeyValue(key,value);                                   
-    if(isOverfull()){                                            
-        splitLeafNode(tree);                                     
-    }                                                            
-}                                                                                                                    
+    insertKeyValue(key,value);
+    if(isOverfull()){
+        splitLeafNode(tree);
+    }                                     
+}               
 ```
 
 分裂叶子节点的方法首先是创建两个新的叶子节点，修改链表关系，然后复制所有key-value对，然后比较复杂的一步是修改父亲关系，需要判断当前分裂的叶子节点是否是根节点，若是根节点，需要创建一个新的根节点作为分裂的两个叶子节点的父节点，若不是根节点，需要删除父节点对当前分裂节点的儿子指针，然后加上分裂后两个新节点的儿子指针，然后如果父节点的size也超过了，就应该进行第三步的分裂，`splitInternalNode(tree)`
@@ -196,7 +196,8 @@ public boolean deleteLeafNode(BPlusTree tree,Tuple key,Tuple value){
 }          
 private boolean isPrevLoanable(){                                                         
     return prev!=null && prev.isLoanable() && parent==prev.parent;                        
-}                                                                                                                                                          private boolean isNextLoanable(){                                                         
+}                                                                       
+private boolean isNextLoanable(){                                                         
     return next!=null && next.isLoanable() && parent==next.parent;                        
 }                                                                                         
 private void loanFromPrev(){                                                              
@@ -226,7 +227,8 @@ private boolean canMergePrev(){
 }                                                                                           
 private boolean canMergeNext(){                                                             
     return canMerge(next);                                                                  
-}                                                                                                                                                          private void mergePrev(){                    
+}                                                                                   
+private void mergePrev(){                    
     int siz=keys.size();                     
     for (int i = 0; i <siz; i++) {           
         prev.keys.add(keys.get(i));          

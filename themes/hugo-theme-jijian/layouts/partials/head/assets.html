@@ -11,3 +11,64 @@
 {{- partial "head/math" . -}}
 {{- partial "head/highlight" . -}}
 {{- partial "head/scroller" -}}
+<style>
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    main {
+        top: 90px;
+        padding-top: 55px;
+        margin-bottom: 0.5rem;
+    }
+    @media (min-width: 1023px) {
+        #mobile-navbar {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        #desktop-navbar {
+            display: none;
+        }
+    }
+
+    #mobile-navbar > div.navbar-menu.is-active > div > a {
+        width: 50px;
+        display: inline-block;
+    }
+
+
+    @media screen and (max-width: 960px) {
+        .is-1 {
+            display: none !important;
+        }
+    }
+
+    @media screen and (min-width: 361px) {
+        .z-pagination-mobile {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 360px) {
+        .z-pagination-desktop {
+            display: none;
+        }
+    }
+    ul {
+        padding-left: 0;
+    }
+    body {
+        display: flex;
+        flex-flow: column;
+        margin: 0 !important;
+    }
+    .columns {
+        margin: 0 !important;
+    }
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+</style>
