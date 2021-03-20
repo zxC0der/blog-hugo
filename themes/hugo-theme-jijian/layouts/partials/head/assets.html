@@ -1,8 +1,9 @@
 <!--TODO 如果用bulma cdn，有些样式会被覆盖得很奇怪-->
 <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
 {{- $mainStyle := resources.Get "css/main.css" -}}
-{{- $customStyle := resources.Get "css/custom.css" -}}
-{{- $style := slice $mainStyle $customStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}
+<!--{{- $customStyle := resources.Get "css/custom.css" -}}-->
+<!--{{- $style := slice $mainStyle $customStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}-->
+{{- $style := slice $mainStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}
 <link rel=stylesheet href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 <!--{{- $customScript := resources.Get "js/custom.js" -}}-->
 <!--这里把bundle.js去掉，所有js改为内联-->
