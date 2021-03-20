@@ -1,3 +1,36 @@
+<style>
+    .z-detail-title {
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+    .z-detail, h1 h2 h3 {
+        color: #333;
+    }
+    .z-inline-code {
+        background: #FFFFCC;
+    }
+    .img-fluid {
+        /*图片渲染不超过文章宽度*/
+        max-width: 100%;
+        max-height: 100%;
+    }
+    /*line number*/
+    .hljs ul li {
+        list-style: decimal;
+        padding: 3px !important;
+        margin: 0 !important;
+    }
+    #collapseTOC {
+        height: 450px;
+        overflow: auto;
+    }
+    /*想办法让点到的标题 有一个这个css 而不是每个标题 根据目录点击的href获得id，然后找到这个id，添加css*/
+    .z-dingweizhunque {
+        padding-top: 2.3333333em !important;
+        margin-top: -1.6666666em !important; /* 临时解决方案... */
+        /*他妈的，纵向margin重叠了解一下，https://juejin.cn/post/6844903497045917710*/
+    }
+</style>
 <article class="content post">
   <div class="columns">
     <div class="column is-full z-detail">
@@ -17,19 +50,3 @@
     </div>
   </div>
 </article>
-<script>
-    window.onload=function () {
-        let headers=document.body.querySelectorAll('.post-content h1, h2, h3, h4, h5, h6');
-        headers.forEach((anchor) => {
-            const id = anchor.getAttribute('id');
-            if (!id) {
-                return;
-            }
-            const a = document.createElement('a');
-            a.setAttribute('href', `#${id}`);
-            a.setAttribute('class', 'anchor');
-            a.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M17.657 14.828l-1.414-1.414L17.657 12A4 4 0 1 0 12 6.343l-1.414 1.414-1.414-1.414 1.414-1.414a6 6 0 0 1 8.485 8.485l-1.414 1.414zm-2.829 2.829l-1.414 1.414a6 6 0 1 1-8.485-8.485l1.414-1.414 1.414 1.414L6.343 12A4 4 0 1 0 12 17.657l1.414-1.414 1.414 1.414zm0-9.9l1.415 1.415-7.071 7.07-1.415-1.414 7.071-7.07z"/></svg>';
-            anchor.appendChild(a);
-        });
-    }
-</script>

@@ -1,3 +1,18 @@
+<style>
+  .pagination-previous, .pagination-next, .pagination-link {
+    color: black;
+    border-color: #666666;
+  }
+  .pagination-previous, .pagination-next, .pagination-link:hover {
+    color: black;
+    border-color: black;
+  }
+  .pagination-link.is-current {
+    color: black;
+    background: #CCCCCC;
+    border-color: #666666;
+  }
+</style>
 <div style="margin-top: 25px;">
   <nav class="pagination is-centered is-small" role="navigation" aria-label="pagination">
   {{ $pag := $.Paginator }}

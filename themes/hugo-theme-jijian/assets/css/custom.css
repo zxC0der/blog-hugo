@@ -6,23 +6,11 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 main {
     top: 90px;
     padding-top: 55px;
     margin-bottom: 0.5rem;
-}
-
-.z-post-list {
-    width: 80%;
-}
-
-.z-navbar {
-    background: white !important;
-    /*background: #CCCC99!important;*/
-}
-
-.navbar-item:hover {
-    color: #0a0a0a !important;
 }
 
 @media (min-width: 1023px) {
@@ -81,108 +69,8 @@ ul {
     padding-left: 0;
 }
 
-.pagination-previous, .pagination-next, .pagination-link {
-    color: black;
-    border-color: #666666;
-}
-
-.pagination-previous, .pagination-next, .pagination-link:hover {
-    color: black;
-    border-color: black;
-}
-
-.pagination-link.is-current {
-    color: black;
-    background: #CCCCCC;
-    border-color: #666666;
-}
-
-.z-post-list-item > h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
 .z-post-meta {
     font-size: 14px;
-}
-
-.z-footer {
-    color: #666666;
-    text-align: center;
-}
-
-.z-term-item {
-    background: #9fceff !important;
-    margin-bottom: 10px;
-}
-
-.z-breadcrumb {
-    margin-bottom: 0 !important;
-}
-
-.z-breadcrumb a {
-    color: #666666 !important;
-}
-
-#btnLoadMore {
-    font-weight: bold;
-    border: #339966 solid 2px;
-}
-
-.z-search-input{
-    width: 100%;
-    outline-style: none ;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    padding: 13px 14px;
-    font-size: 14px;
-    font-weight: 600;
-}
-.z-search-input:focus {
-    border: #339966 solid 1px;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
-}
-.z-navbar-search-input{
-    outline-style: none ;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    padding: 8px 12px;
-    font-size: 12px;
-}
-.z-navbar-search-input:focus {
-    border: #339966 solid 1px;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
-}
-
-.z-post-footer {
-    text-align: left;
-}
-
-.d-none {
-    display: none;
-}
-
-.z-search-tip {
-    background-color: #fffbeb;
-    color: #947600;
-    margin-top: 5px;
-    margin-bottom: 0 !important;
-    border-radius: 4px;
-    padding: 1.25rem 2.5rem 1.25rem 1.5rem;
-}
-
-.z-about {
-    color: #666;
-}
-
-.z-about, li {
-    margin-bottom: 10px;
-}
-
-.z-about-title {
-    color: #0a0a0a;
-    font-size: 28px;
-    margin-top: 20px;
 }
 
 body {
@@ -193,77 +81,4 @@ body {
 
 .columns {
     margin: 0 !important;
-}
-
-/*搜索高亮要自定义样式*/
-.text-accent {
-    color: #FF0033;
-}
-
-.z-detail-title {
-    margin-top: 0;
-    margin-bottom: 12px;
-}
-
-.z-detail, h1 h2 h3 {
-    color: #333;
-}
-
-.accordion-header {
-    font-size: 24px;
-    color: #0a0a0a;
-}
-
-.accordion {
-    position: fixed;
-}
-
-.accordion-header:hover {
-    cursor: pointer;
-}
-
-#collapseTOC {
-    height: 450px;
-    overflow: auto;
-}
-/*想办法让点到的标题 有一个这个css 而不是每个标题 根据目录点击的href获得id，然后找到这个id，添加css*/
-.z-dingweizhunque{
-    padding-top: 2.3333333em!important;
-    margin-top: -1.6666666em!important; /* 临时解决方案... */
-/*他妈的，纵向margin重叠了解一下，https://juejin.cn/post/6844903497045917710*/
-}
-.btn-scroll-to-top {
-    bottom: 1.5rem;
-    color: black;
-    display: none;
-    position: fixed;
-    right: 1.5rem;
-}
-.anchor {
-    visibility: hidden;
-}
-
-.post-content h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
-    visibility: visible;
-}
-.z-inline-code{
-    background: #FFFFCC;
-}
-.img-fluid{
-    /*图片渲染不超过文章宽度*/
-    max-width: 100%;
-    max-height: 100%;
-}
-/*line number*/
-.hljs ul li {
-    list-style: decimal;
-    padding: 3px!important;
-    margin: 0 !important;
-}
-.search-result-title{
-    margin-bottom: 5px!important;
-}
-.search-result-meta{
-    margin-top: 5px!important;
-    margin-bottom: 5px!important;
 }

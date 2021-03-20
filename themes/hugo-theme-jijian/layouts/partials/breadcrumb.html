@@ -1,4 +1,12 @@
 {{- if or (default true .Site.Params.breadcrumb) (default true .Params.breadcrumb) -}}
+<style>
+  .z-breadcrumb {
+    margin-bottom: 0 !important;
+  }
+  .z-breadcrumb a {
+    color: #666666 !important;
+  }
+</style>
 <nav class="breadcrumb z-breadcrumb" aria-label="breadcrumbs">
   <ul>
     {{- template "breadcrumbnav" (dict "p1" . "p2" .) -}}
