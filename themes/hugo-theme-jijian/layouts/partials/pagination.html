@@ -1,28 +1,64 @@
 <style>
-  .pagination-previous, .pagination-next, .pagination-link {
-    color: black;
-    border-color: #666666;
+  .z-pagination-div{
+    margin-top: 25px;
+    text-align: center;
   }
-  .pagination-previous, .pagination-next, .pagination-link:hover {
-    color: black;
-    border-color: black;
+  ul.z-pagination{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
   }
-  .pagination-link.is-current {
+  ul.z-pagination li {
+    display: inline;
+  }
+  ul.z-pagination li a {
     color: black;
-    background: #CCCCCC;
-    border-color: #666666;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  ul.z-pagination li>span {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  ul.z-pagination li a.active {
+    background-color: #5ecb63;
+    color: white;
+  }
+  ul.z-pagination li>span.active {
+    background-color: #5ecb63;
+    color: white;
+  }
+  ul.z-pagination li a:hover:not(.active) {
+    background-color: #ddd;
+  }
+  ul.z-pagination li a {
+    border-radius: 5px;
+    margin: 0 4px;
+  }
+  ul.z-pagination li a.active {
+    border-radius: 5px;
+  }
+  ul.z-pagination li a[disabled] {
+    background: #666666!important;
+    opacity:0.5;
+    color: white;
+  }
+  ul.z-pagination li a[disabled]:hover{
+    cursor:not-allowed!important;
   }
 </style>
-<div style="margin-top: 25px;">
-  <nav class="pagination is-centered is-small" role="navigation" aria-label="pagination">
+<div class="z-pagination-div">
   {{ $pag := $.Paginator }}
   {{ if gt $pag.TotalPages 1 }}
-  <ul class="pagination-list">
+  <ul class="z-pagination">
     <li>
-      <a class="pagination-link"
+      <a
          {{ if not $pag.HasPrev }} disabled {{ end }}
-         {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }}  aria-label="Previous">
-        <span aria-hidden="true">Previous</span></a>
+         {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }}>
+        <span>Prev</span></a>
     </li>
     {{ $ellipsed := false }}
     {{ $shouldEllipse := false }}
@@ -39,27 +75,27 @@
       {{ end }}
     {{ if $showNumber }}
     <li class="z-pagination-desktop">
-      <a  class="pagination-link {{ if eq . $pag }} is-current {{ end }}" href="{{ .URL }}">
+      <a  class="{{ if eq . $pag }} active {{ end }}" href="{{ .URL }}">
         {{ .PageNumber }}</a>
     </li>
     {{ else if $shouldEllipse }}
     <li class="z-pagination-desktop">
-      <span class="pagination-ellipsis">&hellip;</span>
+      <span>&hellip;</span>
     </li>
     {{ end }}
     {{ end }}
     <li class="z-pagination-mobile">
-      <span>
+      <span active>
         {{ $pag.PageNumber }}
       </span>
     </li>
     <li>
-      <a class="pagination-link"
+      <a
          {{ if not $pag.HasNext }} disabled{{ end }}
-         {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }} aria-label="Next">
-        <span aria-hidden="true">Next</span></a>
+         {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }}>
+        <span>Next</span>
+      </a>
     </li>
   </ul>
   {{ end }}
-  </nav>
 </div>
