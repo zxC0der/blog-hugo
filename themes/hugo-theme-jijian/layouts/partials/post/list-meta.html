@@ -1,17 +1,12 @@
-<style>
-    .z-post-meta {
-        font-size: 14px;
-    }
-</style>
 <div>
     {{- range $key, $value := .Site.Taxonomies -}}
     {{- range ($.GetTerms $key) -}}
     {{ if eq $key "category" }}
-    <span class="tag is-success is-light">
+    <span class="z-post-tag success">
         <a href="{{ .Permalink }}" class="z-post-meta">{{ .Name }}</a>
     </span>
     {{ else }}
-    <span class="tag is-warning is-light">
+    <span class="z-post-tag warning">
         <a href="{{ .Permalink }}" class="z-post-meta">#{{ .Name }}</a>
     </span>
     {{ end }}

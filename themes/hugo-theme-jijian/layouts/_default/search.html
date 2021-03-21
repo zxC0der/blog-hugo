@@ -40,6 +40,28 @@
     .text-accent {
         color: #FF0033;
     }
+    .z-post-meta {
+        font-size: 14px;
+    }
+    .z-post-tag{
+        align-items: center;
+        border-radius: 4px;
+        display: inline-flex;
+        font-size: .75rem;
+        height: 2em;
+        justify-content: center;
+        line-height: 1.5;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+    .z-post-tag.success{
+        background-color: #effaf3;
+        color: #257942;
+    }
+    .z-post-tag.warning{
+        background-color: #fffbeb;
+        color: #947600;
+    }
 </style>
 <div class="columns">
     <div class="column is-1"></div>
@@ -257,15 +279,15 @@
                     "</a>";
                 template += "</h3>";
                 template += "<div class='search-result-meta'>";
-                template += "<span class='tag is-success is-light'>";
+                template += "<span class='z-post-tag success'>";
                 template += "<a href='/category/" + result.category + "' class='z-post-meta'>";
                 template += result.category;
                 template += "</a>";
                 template += "</span>";
                 for (let j = 0; j < result.tags.length; j++) {
-                    template += "<span class='tag is-warning is-light'>";
+                    template += "<span class='z-post-tag warning'>";
                     template += "<a href='/tags/" + result.tags[j] + "' class='z-post-meta'>";
-                    template += result.tags[j];
+                    template += "#"+result.tags[j];
                     template += "</a>";
                     template += "</span>";
                 }

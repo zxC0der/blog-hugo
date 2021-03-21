@@ -1,8 +1,21 @@
 {{ define "content" }}
 <style>
     .z-term-item {
-        background: #9fceff !important;
+        background: #9fceff;
         margin-bottom: 10px;
+        font-size: 1rem;
+    }
+    .z-tag{
+        align-items: center;
+        border-radius: 4px;
+        color: #3a3a3a;
+        display: inline-flex;
+        height: 2em;
+        justify-content: center;
+        line-height: 1.5;
+        padding-left: .75em;
+        padding-right: .75em;
+        white-space: nowrap;
     }
 </style>
 <div>
@@ -15,7 +28,7 @@
                 <div>
                     {{- range .Data.Terms.ByCount -}}
                     <a href="{{ .Page.Permalink }}">
-                        <span class="tag is-medium z-term-item">
+                        <span class="z-tag z-term-item">
                             {{ .Page.Title }}({{ .Count }})
                         </span>
                     </a>
