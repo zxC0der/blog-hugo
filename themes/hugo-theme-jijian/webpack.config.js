@@ -1,5 +1,4 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     entry: {},
@@ -29,8 +28,4 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', 'jsx'],
     },
-    plugins: [
-        new ESLintPlugin(),
-    ]
 };
-// TODO 自己弄个github cdn放js 自己本地打包后再放github 可以实现吗？

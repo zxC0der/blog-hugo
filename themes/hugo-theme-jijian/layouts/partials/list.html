@@ -36,12 +36,11 @@
             {{- $pages = where (.Paginate .Site.RegularPages).Pages "Type" "in" $sections -}}
             {{- else -}}
             {{- partial "breadcrumb" . -}}
-            {{- partial "sections" . -}}
             {{- end -}}
             {{- partial "hooks/list-begin" . -}}
             <div>
                 {{- range $pages -}}
-                <div class="box z-post-list-item">
+                <div class="z-box z-post-list-item">
                         <h3>
                             <a href="{{ .Permalink }}">{{ .Title }}</a>
                         </h3>
