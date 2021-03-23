@@ -1,17 +1,4 @@
-<!--TODO 如果用bulma cdn，有些样式会被覆盖得很奇怪-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-<!--这里把bundle.css/js去掉，所有css/js改为内联-->
-<!--{{- $mainStyle := resources.Get "css/main.css" -}}-->
-<!--{{- $customStyle := resources.Get "css/custom.css" -}}-->
-<!--{{- $style := slice $mainStyle $customStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}-->
-<!--{{- $style := slice $mainStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}-->
-<!--<link rel=stylesheet href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">-->
-<!--{{- $customScript := resources.Get "js/custom.js" -}}-->
-<!--{{- $script := slice $customScript | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint -}}-->
-<!--<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>-->
-{{- partial "head/math" . -}}
-{{- partial "head/highlight" . -}}
-{{- partial "head/scroller" -}}
 <style>
     a {
         text-decoration: none;
@@ -94,3 +81,69 @@
         font-weight: bold;
     }
 </style>
+<!--滚动到顶部-->
+<script>
+    // window.onload 等dom加载完
+    window.onload=function(){
+        let scroller = document.getElementById('btnScrollToTop')
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scroller.style.display = 'block';
+            } else {
+                scroller.style.display = 'none';
+            }
+        });
+        scroller.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0, left: 0, behavior: 'smooth',
+            });
+        });
+    }
+</script>
+<!--详情页katex渲染，代码高亮-->
+{{- if or .Params.math .Site.Params.math -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css"
+      integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw"
+      crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"
+        integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH"
+        crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+        integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+        crossorigin="anonymous"
+        onload="initKatex();"></script>
+<script>
+    function initKatex() {
+        const post = document.querySelector('.post');
+        if (post) {
+            renderMathInElement(post, {
+                delimiters: [
+                    // 自定义分隔符，才可以支持行内公式
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                ]
+            });
+        }
+    }
+</script>
+<link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.6.0/build/styles/atom-one-light.min.css">
+<script defer src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.6.0/build/highlight.min.js"
+        onload="initHighLight();"></script>
+<script>
+    function initHighLight() {
+        hljs.configure({
+            languages: ["c", "cpp", "java", "c#"]
+        });
+        const codes = document.querySelectorAll('div code')
+        codes.forEach((block) => {
+            if (block.classList.length >= 1) {
+                block.innerHTML = "<ul><li>" + block.innerHTML.replace(/\n/g, "\n</li><li>") + "\n</li></ul>";
+                hljs.highlightBlock(block);
+            } else {
+                block.classList.add('z-inline-code')
+            }
+        });
+    }
+</script>
+{{- end -}}

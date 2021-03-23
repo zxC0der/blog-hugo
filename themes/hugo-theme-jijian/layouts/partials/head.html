@@ -1,7 +1,5 @@
 <link rel="icon" href="{{ absURL "images/favicon.ico" }}">
 <meta name="description" content="zxCoder's personal blog"/>
-{{- template "_internal/schema.html" . -}}
-{{ template "_internal/opengraph.html" . }}
 {{- partial "head/feed" . -}}
 {{- partial "head/site-verification" . -}}
 {{- if eq .Permalink (absLangURL "search/") -}}
