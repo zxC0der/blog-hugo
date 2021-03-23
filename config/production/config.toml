@@ -1,7 +1,6 @@
 baseURL = "/"
 title = "zxCoder's blog"
 theme = "hugo-theme-jijian"
-copyright = "Copyright © 2021-{year} zxCoder. All Rights Reserved."
 defaultContentLanguage = "zh-cn"
 
 # Pagination

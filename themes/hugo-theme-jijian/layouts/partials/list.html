@@ -37,7 +37,6 @@
             {{- else -}}
             {{- partial "breadcrumb" . -}}
             {{- end -}}
-            {{- partial "hooks/list-begin" . -}}
             <div>
                 {{- range $pages -}}
                 <div class="z-box z-post-list-item">
@@ -48,7 +47,6 @@
                 </div>
                 {{- end -}}
             </div>
-            {{- partial "hooks/list-end" . -}}
             {{- partial "pagination" . -}}
         </div>
         <div class="column is-1"></div>

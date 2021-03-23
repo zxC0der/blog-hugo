@@ -1,5 +1,5 @@
-{{- partial "head/favicons" . -}}
-<meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}" />
+<link rel="icon" href="{{ absURL "images/favicon.ico" }}">
+<meta name="description" content="zxCoder's personal blog"/>
 {{- template "_internal/schema.html" . -}}
 {{ template "_internal/opengraph.html" . }}
 {{- partial "head/feed" . -}}
@@ -10,4 +10,3 @@
 {{- partial "head/assets" . -}}
 {{- partial "head/google-analytics" . -}}
 {{- partial "head/baidu-analytics" . -}}
-{{- partial "head/google-adsense" . -}}

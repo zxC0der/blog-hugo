@@ -1,7 +1,6 @@
 baseURL = "/"
 title = "zxCoder's blog"
 theme = "hugo-theme-jijian"
-copyright = "Copyright © 2021-{year} zxCoder. All Rights Reserved."
 defaultContentLanguage = "zh-cn"
 
 # Pagination
@@ -38,9 +37,6 @@ titleSeparator = "|" # Title separator. Default to "-".
 dateFormat = "2006-01-02"
 description = "一个简单的Hugo博客主题"
 math = true
-
-# Google Adsense
-googleAdsense = ""
 
 [archive]
 paginate = 8 # Archive pagination. Default to 100.

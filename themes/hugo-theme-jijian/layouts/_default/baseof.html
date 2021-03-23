@@ -6,18 +6,15 @@
     <title>{{- block "title" . -}}{{- partial "head/title" . -}}{{- end -}}</title>
     {{- partial "head.html" . -}}
     {{- block "head-end" . -}}{{- end -}}
-    {{- partial "hooks/head-end" . -}}
   </head>
   <body>
     {{- partial "header.html" . -}}
-    {{- partial "hooks/main-begin" . -}}
     <main role="main">
       <div>
         {{- block "content" . -}}{{- end -}}
       </div>
     </main>
-    {{- partial "hooks/main-end" . -}}
     {{- partial "footer.html" . -}}
-    {{- partial "body-end" . -}}
+    {{- partial "scroll-to-top" . -}}
   </body>
 </html>

@@ -1,12 +1,12 @@
 <!--TODO 如果用bulma cdn，有些样式会被覆盖得很奇怪-->
-<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
-{{- $mainStyle := resources.Get "css/main.css" -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+<!--这里把bundle.css/js去掉，所有css/js改为内联-->
+<!--{{- $mainStyle := resources.Get "css/main.css" -}}-->
 <!--{{- $customStyle := resources.Get "css/custom.css" -}}-->
 <!--{{- $style := slice $mainStyle $customStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}-->
-{{- $style := slice $mainStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}
-<link rel=stylesheet href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+<!--{{- $style := slice $mainStyle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}-->
+<!--<link rel=stylesheet href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">-->
 <!--{{- $customScript := resources.Get "js/custom.js" -}}-->
-<!--这里把bundle.js去掉，所有js改为内联-->
 <!--{{- $script := slice $customScript | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint -}}-->
 <!--<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>-->
 {{- partial "head/math" . -}}
@@ -82,5 +82,15 @@
     }
     .z-box:not(:last-child){
         margin-bottom: 1.5rem;
+    }
+    h1{
+        font-size: 2em;
+        font-weight: bold;
+        margin-top: 0.67em;
+        margin-bottom: 0.67em;
+    }
+    h3{
+        font-size: 1.17rem;
+        font-weight: bold;
     }
 </style>

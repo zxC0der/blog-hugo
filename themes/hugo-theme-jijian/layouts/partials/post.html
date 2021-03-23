@@ -3,37 +3,45 @@
         margin-top: 0;
         margin-bottom: 12px;
     }
+
     .z-detail, h1 h2 h3 {
         color: #333;
     }
+
     .z-inline-code {
         background: #FFFFCC;
     }
+
     .img-fluid {
         /*图片渲染不超过文章宽度*/
         max-width: 100%;
         max-height: 100%;
     }
+
     /*line number*/
     .hljs ul li {
         list-style: decimal;
         padding: 3px !important;
         margin: 0 !important;
     }
+
     #collapseTOC {
         height: 450px;
         overflow: auto;
     }
+
     /*想办法让点到的标题 有一个这个css 而不是每个标题 根据目录点击的href获得id，然后找到这个id，添加css*/
     .z-dingweizhunque {
         padding-top: 2.3333333em !important;
         margin-top: -1.6666666em !important; /* 临时解决方案... */
         /*他妈的，纵向margin重叠了解一下，https://juejin.cn/post/6844903497045917710*/
     }
+
     .z-post-meta {
         font-size: 14px;
     }
-    .z-post-tag{
+
+    .z-post-tag {
         align-items: center;
         border-radius: 4px;
         display: inline-flex;
@@ -44,31 +52,28 @@
         padding-left: .75em;
         padding-right: .75em;
     }
-    .z-post-tag.success{
+
+    .z-post-tag.success {
         background-color: #effaf3;
         color: #257942;
     }
-    .z-post-tag.warning{
+
+    .z-post-tag.warning {
         background-color: #fffbeb;
         color: #947600;
     }
 </style>
 <article class="content post">
-  <div class="columns">
-    <div class="column is-full z-detail">
-      <div class="post-content columns">
-          <div class="column is-8">
-              <h1 class="z-detail-title">{{ .Title }}</h1>
-              {{- partial "post/detail-meta" . -}}
-              {{- partial "hooks/content-begin" . -}}
+    <div class="post-content columns z-detail">
+        <div class="column is-8">
+            <h1 class="z-detail-title">{{ .Title }}</h1>
+            {{- partial "post/detail-meta" . -}}
             {{- .Content -}}
-          </div>
-          <div class="column is-4">
-            {{- partial "post/toc" . -}}
-          </div>
         </div>
-      {{- partial "post/copyright" . -}}
-      {{- partial "hooks/content-end" . -}}
+        <div class="column is-4">
+            {{- partial "post/toc" . -}}
+        </div>
     </div>
-  </div>
+    {{- partial "post/copyright" . -}}
+    </div>
 </article>
