@@ -1,15 +1,32 @@
 <!doctype html>
-<html lang="{{ .Lang }}">
+<html lang="zh">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="zxCoder's personal blog">
+    {{- if .IsHome -}}
+    <!--谷歌验证-->
+    <meta name="google-site-verification" content="ok62AWCEA3o2wen9_qHvb68CEiOaB8l1VVUC0FMmITo" />
+    <!--百度验证-->
+    <meta name="baidu-site-verification" content="code-kMhBXCfocH" />
+    {{- end -}}
+    <!--搜索数据-->
+    {{- if eq .Permalink (absLangURL "search/") -}}
+    <meta data-name="search-index" content="{{ absLangURL "index.json" }}">
+    {{- end -}}
+    <link rel="icon" href="{{ absURL "images/favicon.ico" }}">
+    <!--TODO RSS feed-->
+    {{- with .OutputFormats.Get "rss" -}}
+    {{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML -}}
+    {{- end -}}
+    <!--bulma.css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>
       {{- block "title" . -}}
-      {{- printf "%s %s %s" .Title  "-" .Site.Title -}}
+      {{- printf "%s - %s" .Title  .Site.Title -}}
       {{- end -}}
     </title>
-    {{- partial "head.html" . -}}
-    {{- block "head-end" . -}}{{- end -}}
+    <!--一些全局css-->
     <style>
       .btn-scroll-to-top {
         bottom: 1.5rem;
@@ -18,16 +35,201 @@
         position: fixed;
         right: 1.5rem;
       }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      main {
+        top: 90px;
+        padding-top: 55px;
+        margin-bottom: 0.5rem;
+      }
+      @media screen and (max-width: 960px) {
+        .is-1 {
+          display: none !important;
+        }
+      }
+      @media screen and (min-width: 361px) {
+        .z-pagination-mobile {
+          display: none!important;
+        }
+      }
+      @media screen and (max-width: 360px) {
+        .z-pagination-desktop {
+          display: none!important;
+        }
+      }
+      ul {
+        padding-left: 0;
+      }
+      body {
+        display: flex;
+        flex-flow: column;
+        margin: 0 !important;
+      }
+      .columns {
+        margin: 0 !important;
+      }
+      pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .z-box{
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,2%);
+        color: #4a4a4a;
+        display: block;
+        padding: 1.25rem;
+      }
+      .z-box:not(:last-child){
+        margin-bottom: 1.5rem;
+      }
+      h1{
+        font-size: 2em;
+        font-weight: bold;
+        margin-top: 0.67em;
+        margin-bottom: 0.67em;
+      }
+      h3{
+        font-size: 1.17rem;
+        font-weight: bold;
+      }
+      .z-footer {
+        color: #666666;
+        text-align: center;
+      }
+      .z-navbar {
+        background: white !important;
+      }
+      .navbar-item:hover {
+        color: #0a0a0a !important;
+      }
+      .navbar-start {
+        margin-left: 20px !important;
+      }
     </style>
+    {{- if ne .Permalink (absLangURL "search/") -}}
+    <style>
+      .z-navbar-search-input{
+        outline-style: none ;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+      .z-navbar-search-input:focus {
+        border: #339966 solid 1px;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+      }
+    </style>
+    {{- end -}}
+    <!--滚动到顶部-->
+    <script>
+      // window.onload 等dom加载完
+      window.onload=function(){
+        let scroller = document.getElementById('btnScrollToTop')
+        window.addEventListener('scroll', () => {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scroller.style.display = 'block';
+          } else {
+            scroller.style.display = 'none';
+          }
+        });
+        scroller.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0, left: 0, behavior: 'smooth',
+          });
+        });
+      }
+    </script>
+    <!--详情页katex渲染，代码高亮-->
+    {{- if or .Params.math .Site.Params.math -}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css"
+          integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw"
+          crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"
+            integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH"
+            crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+            integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v"
+            crossorigin="anonymous"
+            onload="initKatex();"></script>
+    <script>
+      function initKatex() {
+        const post = document.querySelector('.post');
+        if (post) {
+          renderMathInElement(post, {
+            delimiters: [
+              // 自定义分隔符，才可以支持行内公式
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ]
+          });
+        }
+      }
+    </script>
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.6.0/build/styles/atom-one-light.min.css">
+    <script defer src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.6.0/build/highlight.min.js"
+            onload="initHighLight();"></script>
+    <script>
+      function initHighLight() {
+        hljs.configure({
+          languages: ["c", "cpp", "java", "c#"]
+        });
+        const codes = document.querySelectorAll('div code')
+        codes.forEach((block) => {
+          if (block.classList.length >= 1) {
+            block.innerHTML = "<ul><li>" + block.innerHTML.replace(/\n/g, "\n</li><li>") + "\n</li></ul>";
+            hljs.highlightBlock(block);
+          } else {
+            block.classList.add('z-inline-code')
+          }
+        });
+      }
+    </script>
+    {{- end -}}
   </head>
   <body>
-    {{- partial "header.html" . -}}
-    <main role="main">
+  <header>
+    <nav class="is-fixed-top z-navbar">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="{{ absLangURL "" }}">zxCoder</a>
+          <a class="navbar-item" href="{{ absLangURL "" }}">首页</a>
+          <a class="navbar-item" href="{{ absLangURL "category" }}">分类</a>
+          <a class="navbar-item" href="{{ absLangURL "tags" }}">标签</a>
+          <a class="navbar-item" href="{{ absLangURL "about" }}">关于</a>
+          {{- if ne .Permalink (absLangURL "search/") -}}
+          <div class="navbar-item">
+            <form action="{{ absLangURL "search" }}">
+            <div class="field">
+              <input class="z-navbar-search-input" id="searchQuery" name="q" placeholder="搜索">
+            </div>
+            </form>
+          </div>
+          {{- end -}}
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main role="main">
       <div>
         {{- block "content" . -}}{{- end -}}
       </div>
     </main>
-    {{- partial "footer.html" . -}}
+    <!--底部信息-->
+    <footer class="z-footer">
+      <p>
+        {{ replace "Copyright © 2021-{year} zxCoder. All Rights Reserved." "{year}" now.Year }}
+      </p>
+      <p>
+        Powered by<a href="https://gohugo.io" target="_blank">Hugo.</a>
+      </p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </footer>
     <!--滚动到顶部-->
     <a id="btnScrollToTop" class="btn-scroll-to-top">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">

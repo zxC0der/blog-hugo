@@ -26,6 +26,56 @@
         background-color: #fffbeb;
         color: #947600;
     }
+    .z-pagination-div{
+        margin-top: 25px;
+        text-align: center;
+    }
+    ul.z-pagination{
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+    ul.z-pagination li {
+        display: inline;
+    }
+    ul.z-pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+    ul.z-pagination li>span {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+    ul.z-pagination li a.active {
+        background-color: #5ecb63;
+        color: white;
+    }
+    ul.z-pagination li>span.active {
+        background-color: #5ecb63;
+        color: white;
+    }
+    ul.z-pagination li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+    ul.z-pagination li a {
+        border-radius: 5px;
+        margin: 0 4px;
+    }
+    ul.z-pagination li a.active {
+        border-radius: 5px;
+    }
+    ul.z-pagination li a[disabled] {
+        background: #666666!important;
+        opacity:0.5;
+        color: white;
+    }
+    ul.z-pagination li a[disabled]:hover{
+        cursor:not-allowed!important;
+    }
 </style>
 <div>
     <div class="columns">
@@ -61,7 +111,55 @@
                 </div>
                 {{- end -}}
             </div>
-            {{- partial "pagination" . -}}
+            <div class="z-pagination-div">
+                {{ $pag := $.Paginator }}
+                {{ if gt $pag.TotalPages 1 }}
+                <ul class="z-pagination">
+                    <li>
+                        <a
+                                {{ if not $pag.HasPrev }} disabled {{ end }}
+                                {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }}>
+                            <span>Prev</span></a>
+                    </li>
+                    {{ $ellipsed := false }}
+                    {{ $shouldEllipse := false }}
+                    {{ range $pag.Pagers }}
+                    {{ $right := sub .TotalPages .PageNumber }}
+                    {{ $showNumber := or (le .PageNumber 2) (eq $right 0) }}
+                    {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
+                    {{ if $showNumber }}
+                    {{ $ellipsed = false }}
+                    {{ $shouldEllipse = false }}
+                    {{ else }}
+                    {{ $shouldEllipse = not $ellipsed }}
+                    {{ $ellipsed = true }}
+                    {{ end }}
+                    {{ if $showNumber }}
+                    <li class="z-pagination-desktop">
+                        <a  class="{{ if eq . $pag }} active {{ end }}" href="{{ .URL }}">
+                            {{ .PageNumber }}</a>
+                    </li>
+                    {{ else if $shouldEllipse }}
+                    <li class="z-pagination-desktop">
+                        <span>&hellip;</span>
+                    </li>
+                    {{ end }}
+                    {{ end }}
+                    <li class="z-pagination-mobile">
+      <span active>
+        {{ $pag.PageNumber }}
+      </span>
+                    </li>
+                    <li>
+                        <a
+                                {{ if not $pag.HasNext }} disabled{{ end }}
+                                {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }}>
+                            <span>Next</span>
+                        </a>
+                    </li>
+                </ul>
+                {{ end }}
+            </div>
         </div>
         <div class="column is-1"></div>
     </div>
