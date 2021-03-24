@@ -1,9 +1,18 @@
 <link rel="icon" href="{{ absURL "images/favicon.ico" }}">
 <meta name="description" content="zxCoder's personal blog"/>
-{{- partial "head/feed" . -}}
-{{- partial "head/site-verification" . -}}
+<!--RSS feed-->
+{{- with .OutputFormats.Get "rss" -}}
+    {{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML -}}
+{{- end -}}
+{{- if .IsHome -}}
+    <!--谷歌验证-->
+    <meta name="google-site-verification" content="ok62AWCEA3o2wen9_qHvb68CEiOaB8l1VVUC0FMmITo" />
+    <!--百度验证-->
+    <meta name="baidu-site-verification" content="code-kMhBXCfocH" />
+{{- end -}}
+<!--搜索数据-->
 {{- if eq .Permalink (absLangURL "search/") -}}
-<meta data-name="search-index" content="{{ absLangURL "index.json" }}">
+    <meta data-name="search-index" content="{{ absLangURL "index.json" }}">
 {{- end -}}
 <!--bulma.css-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">

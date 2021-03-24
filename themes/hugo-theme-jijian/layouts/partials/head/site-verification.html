@@ -1,8 +1,0 @@
-{{- if .IsHome -}}
-  {{- $params := .Site.Params -}}
-  {{- with $params.siteVerification.google -}}
-  <meta name="google-site-verification" content="{{ . }}" />
-  {{- end -}}
-  <!--百度验证-->
-  <meta name="baidu-site-verification" content="code-kMhBXCfocH" />
-{{- end -}}

@@ -11,7 +11,7 @@
         align-items: center;
         border-radius: 4px;
         display: inline-flex;
-        font-size: .75rem;
+        font-size: 14px;
         height: 2em;
         justify-content: center;
         line-height: 1.5;
@@ -43,7 +43,21 @@
                         <h3>
                             <a href="{{ .Permalink }}">{{ .Title }}</a>
                         </h3>
-                        {{- partial "post/list-meta" . -}}
+                    <div>
+                        {{- range (.GetTerms "category") -}}
+                            <span class="z-post-tag success">
+                                <a href="{{ .Permalink }}">{{ .Name }}</a>
+                            </span>
+                        {{- end -}}
+                        {{- range (.GetTerms "tags") -}}
+                        <span class="z-post-tag warning">
+                            <a href="{{ .Permalink }}">#{{ .Name }}</a>
+                        </span>
+                        {{- end -}}
+                        <span class="z-post-meta" style="float: right;">
+                            {{ .Date.Format ("Jan 2, 2006") }}
+                        </span>
+                    </div>
                 </div>
                 {{- end -}}
             </div>
