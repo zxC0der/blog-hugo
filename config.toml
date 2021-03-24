@@ -38,22 +38,10 @@ dateFormat = "2006-01-02"
 description = "一个简单的Hugo博客主题"
 math = true
 
-[archive]
-paginate = 8 # Archive pagination. Default to 100.
-# dateFormat = "01-02" # Archive date format. Default to "Jan 2".
-
-[analytics]
-baidu = "954bcdafe15249d2dda26cb98a3a324f"
-
 # Site verification
 [siteVerification]
 google = ""
-bing = ""
 baidu = ""
-baiduUnion = "" # Baidu Union
-so = ""
-sogou = ""
-shenma = ""
 
 [markup]
   [markup.highlight]
