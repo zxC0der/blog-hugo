@@ -7,9 +7,6 @@ defaultContentLanguage = "zh-cn"
 paginate = 6
 paginatePath = "page"
 
-# Google analytics
-# googleAnalytics = "UA-123-45"
-
 enableRobotsTXT = true
 enableEmoji = true
 
@@ -31,20 +28,12 @@ enableEmoji = true
 email = "1129142694@qq.com"
 github = "Zeng1998"
 
-
 # mainSections = ["post", "posts"] # Default to ["posts"].
-titleSeparator = "|" # Title separator. Default to "-".
 dateFormat = "2006-01-02"
 description = "一个简单的Hugo博客主题"
-math = true
-
-# Site verification
-[siteVerification]
-google = ""
-baidu = ""
 
 [markup]
   [markup.highlight]
-  codeFences = false # 关掉默认的code样式，就离谱，居然用内联样式
+    codeFences = false # 关掉默认的code样式，就离谱，居然用内联样式
 # https://discourse.gohugo.io/t/unable-to-customize-the-syntax-highlight-colors/22140/3
 # https://gohugo.io/getting-started/configuration-markup#highlight

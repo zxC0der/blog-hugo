@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{- block "title" . -}}{{- partial "head/title" . -}}{{- end -}}</title>
+    <title>
+      {{- block "title" . -}}
+      {{- printf "%s %s %s" .Title  "-" .Site.Title -}}
+      {{- end -}}
+    </title>
     {{- partial "head.html" . -}}
     {{- block "head-end" . -}}{{- end -}}
     <style>
