@@ -8,13 +8,9 @@ paginate = 6
 paginatePath = "page"
 
 enableRobotsTXT = true
-enableEmoji = true
-
-[blackfriday]
-  hrefTargetBlank = true
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "JSON"]
 
 [taxonomies]
   category = "category"
@@ -23,14 +19,6 @@ enableEmoji = true
 [zh-cn]
   LanguageName = "简体中文"
   contentDir = "content"
-
-
-email = "1129142694@qq.com"
-github = "Zeng1998"
-
-# mainSections = ["post", "posts"] # Default to ["posts"].
-dateFormat = "2006-01-02"
-description = "一个简单的Hugo博客主题"
 
 [markup]
   [markup.highlight]

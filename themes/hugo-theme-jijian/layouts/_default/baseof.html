@@ -14,11 +14,7 @@
     {{- if eq .Permalink (absLangURL "search/") -}}
     <meta data-name="search-index" content="{{ absLangURL "index.json" }}">
     {{- end -}}
-    <link rel="icon" href="{{ absURL "images/favicon.ico" }}">
-    <!--TODO RSS feed-->
-    {{- with .OutputFormats.Get "rss" -}}
-    {{- printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML -}}
-    {{- end -}}
+    <link rel="icon" href="{{ absURL "favicon.ico" }}">
     <!--bulma.css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>
@@ -41,7 +37,6 @@
       }
       main {
         top: 90px;
-        padding-top: 55px;
         margin-bottom: 0.5rem;
       }
       @media screen and (max-width: 960px) {
